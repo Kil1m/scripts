@@ -30,7 +30,7 @@ def record_video(output_path, duration=10):
 
     start_time = cv2.getTickCount()
 
-    while True:
+    while is_recording:
         ret, frame = cap.read()
 
         if not ret:
@@ -75,6 +75,7 @@ def record():
 def stop_record():
     global is_recording
     is_recording = False
+    time.sleep(5)
     os._exit(0)
     return 'Recording stopped.'
 app.run(host='0.0.0.0', port=5000)
